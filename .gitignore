@@ -1,0 +1,7 @@
+/covoit-back/node_modules/
+/covoit-back/package-lock.json
+
+/covoit-front/node_modules/
+/covoit-front/package-lock.json
+
+/.idea/
