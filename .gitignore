@@ -1,7 +1,7 @@
-/covoit-back/node_modules/
-/covoit-back/package-lock.json
+/covogreen-back/node_modules/
+/covogreen-back/package-lock.json
 
-/covoit-front/node_modules/
-/covoit-front/package-lock.json
+/covogreen-front/node_modules/
+/covogreen-front/package-lock.json
 
 /.idea/
