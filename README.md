@@ -25,8 +25,8 @@
 
 ## Auteurs
 
-* **Marvin Rameix		**
-* **Mohamed El Karmoudi	**
-* **Yanice Trech		**
-* **Alex Zarzitski		**
-* **Romain Lembo		**
+* Marvin Rameix
+* Mohamed El Karmoudi
+* Yanice Trech
+* Alex Zarzitski
+* Romain Lembo
