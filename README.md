@@ -25,11 +25,8 @@
 
 ## Auteurs
 
-* **Marvin Rameix		Tel: 06 02 35 44 35		Email: marvin.rameix@laposte.net**
-* **Mohamed El Karmoudi	Tel: 06 24 35 21 00 	Email: karmoudimohamed@gmail.com**
-* **Yanice Trech		Tel: 06 10 72 57 65 	Email: yanice.trech@hotmail.com**
-* **Alex Zarzitski		Tel: 06 33 68 07 62 	Email: alex.zarzitski@gmail.com**
-* **Romain Lembo		Tel: 06 45 26 20 75		Email: romainlembo06@gmail.com**
-
-## Serveur Tomcat
-* **Source : https://tomcat.apache.org/download-80.cgi**
+* **Marvin Rameix		**
+* **Mohamed El Karmoudi	**
+* **Yanice Trech		**
+* **Alex Zarzitski		**
+* **Romain Lembo		**
