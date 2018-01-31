@@ -4,12 +4,6 @@
 * **https://forge-iutinfo.unice.fr/login**
 * **http://www.bouml.fr/download.html**
 
-## Git
-* **git config --global http.sslVerify false**
-* **git clone https://<identifiant>@forge-iutinfo.unice.fr/enseignements/lp/idse/idse-genielogiciel/idse-genielogiciel-groupe3/depot.git**
-* **git flow init**
-* **git pull**
-
 ## Tuto NodeJS + AngularJS
 * **Source : https://openclassrooms.com/courses/developpez-vos-applications-web-avec-angularjs/installez-votre-environnement**
 * **Source : https://angular.io/guide/quickstart**
