@@ -11,16 +11,6 @@ import { UserService } from '../../services/user.service';
 
 export class NewuserComponent implements OnInit {
 
-    public username_ctrl: FormControl;
-    public email_ctrl: FormControl;
-    public firstname_ctrl: FormControl;
-    public lastname_ctrl: FormControl;
-    public password_ctrl: FormControl;
-    public confirmPassword_ctrl: FormControl;
-    public city_ctrl: FormControl;
-    public street_ctrl: FormControl;
-    public cp_ctrl: FormControl;
-    public country_ctrl: FormControl;
     public createUserForm: FormGroup;
 
     constructor(
@@ -30,34 +20,24 @@ export class NewuserComponent implements OnInit {
 
     ngOnInit() {
 
-        this.username_ctrl = this.formBulder.control('', Validators.required);
-        this.email_ctrl = this.formBulder.control('', Validators.required);
-        this.firstname_ctrl = this.formBulder.control('', Validators.required);
-        this.lastname_ctrl = this.formBulder.control('', Validators.required);
-        this.password_ctrl = this.formBulder.control('', Validators.required);
-        this.confirmPassword_ctrl = this.formBulder.control('', Validators.required);
-        this.city_ctrl = this.formBulder.control('', Validators.required);
-        this.street_ctrl = this.formBulder.control('', Validators.required);
-        this.cp_ctrl = this.formBulder.control('', Validators.required);
-        this.country_ctrl = this.formBulder.control('', Validators.required);
-
-
         this.createUserForm = this.formBulder.group({
-            username: this.username_ctrl,
-            email: this.email_ctrl,
-            firstname: this.firstname_ctrl,
-            lastname: this.lastname_ctrl,
-            password: this.password_ctrl,
-            confirmPassword: this.confirmPassword_ctrl,
-            city: this.city_ctrl,
-            street: this.street_ctrl,
-            cp: this.cp_ctrl,
-            country: this.country_ctrl
+            username: this.formBulder.control('', Validators.required),
+            email: this.formBulder.control('', Validators.required),
+            firstName: this.formBulder.control('', Validators.required),
+            lastName: this.formBulder.control('', Validators.required),
+            password: this.formBulder.control('', Validators.required),
+            confirmPassword: this.formBulder.control('', Validators.required),
+            city: this.formBulder.control('', Validators.required),
+            street: this.formBulder.control('', Validators.required),
+            cp: this.formBulder.control('', Validators.required),
+            country: this.formBulder.control('', Validators.required),
         });
 
     }
 
     createUser() {
+        console.log(this.createUserForm.value);
+
         this.userService.createUser(this.createUserForm.value)
             .subscribe(result => {
                 alert(result);
