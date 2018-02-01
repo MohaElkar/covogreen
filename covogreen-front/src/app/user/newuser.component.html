@@ -83,11 +83,28 @@
             <div class="form-group">
                 <label>Conducteur ?*</label>
 
-                <mat-radio-group formControlName="is_driver">
+                <mat-radio-group formControlName="is_driver"
+                                 [formGroup]="is_driver_ctrl"
+                                 (change)="changeIsDriver($event)"
+                                 required>
                     <mat-radio-button value="true">Oui</mat-radio-button>
                     <mat-radio-button value="false">Non</mat-radio-button>
                 </mat-radio-group>
             </div>
+
+            <div class="form-group">
+                <label>Etes-vous véhiculé ?</label>
+
+                <mat-radio-group *ngIf="checkIsDriver()"
+                                 formControlName="have_car"
+                                 [formGroup]="have_car_ctrl"
+                                 (change)="changeHaveCar($event)">
+                    <mat-radio-button value="true">Oui</mat-radio-button>
+                    <mat-radio-button value="false">Non</mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            <app-newcar *ngIf="checkHaveCar()"></app-newcar>
 
             <div class="form-group">
                 <input  id="passwordCreate" name="password" formControlName="password"

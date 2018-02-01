@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators, Validator } from '@angular/forms';
+import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { TextEqualityValidatorModule } from 'ngx-text-equality-validator';
 import { UserService } from '../../services/user.service';
 
@@ -11,6 +11,12 @@ import { UserService } from '../../services/user.service';
 
 export class NewuserComponent implements OnInit {
 
+    public have_car: boolean = false;
+    public have_car_ctrl: FormControl;
+
+    public is_driver: boolean;
+    public is_driver_ctrl: FormControl;
+
     public createUserForm: FormGroup;
 
     constructor(
@@ -19,6 +25,9 @@ export class NewuserComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+
+        this.have_car_ctrl = this.formBulder.control('');
+        this.is_driver_ctrl = this.formBulder.control('');
 
         this.createUserForm = this.formBulder.group({
             username: this.formBulder.control('', Validators.required),
@@ -32,7 +41,8 @@ export class NewuserComponent implements OnInit {
             cp: this.formBulder.control('', Validators.required),
             country: this.formBulder.control('', Validators.required),
             phone: this.formBulder.control('', Validators.required),
-            is_driver: ""
+            is_driver: "",
+            have_car: ""
         });
 
     }
@@ -40,9 +50,27 @@ export class NewuserComponent implements OnInit {
     createUser() {
         console.log(this.createUserForm.value);
 
+        /*
         this.userService.createUser(this.createUserForm.value)
             .subscribe(result => {
                 alert(result);
             });
+        */
+    }
+
+    changeIsDriver($event): void {
+        this.is_driver = JSON.parse($event.value);
+    }
+
+    changeHaveCar($event): void {
+        this.have_car = JSON.parse($event.value);
+    }
+
+    checkIsDriver(): boolean {
+        return this.is_driver;
+    }
+
+    checkHaveCar(): boolean {
+        return this.have_car;
     }
 }

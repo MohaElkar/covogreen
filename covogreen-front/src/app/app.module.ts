@@ -25,12 +25,13 @@ import {AdminService} from '../services/admin.service';
 
 import { UserComponent } from './user/user.component';
 import { NewuserComponent } from './user/newuser.component';
-import { PannierComponent } from './pannier/pannier.component';
 
 import { AdminComponent } from './admin/admin.component';
 import { AdminCategoryComponent } from './admin/admin.category.component';
 import { AdminProductComponent } from './admin/admin.product.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
+
+import { NewCarComponent } from './car/newcar.component';
 
 
 @NgModule({
@@ -57,11 +58,11 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
         LoginComponent,
         UserComponent,
         NewuserComponent,
-        PannierComponent,
         AdminComponent,
         AdminCategoryComponent,
         AdminProductComponent,
-        LoginAdminComponent
+        LoginAdminComponent,
+        NewCarComponent
     ],
     providers: [
         AuthentificationService,
