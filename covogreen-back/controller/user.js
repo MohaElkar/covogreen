@@ -23,7 +23,7 @@ var LoginController = {
      * @param req
      * @param res
      */
-    /*login: function (req, res) {
+    login: function (req, res) {
 
         req.accepts('application/json');
 
@@ -41,11 +41,8 @@ var LoginController = {
         .catch(function (error) {
             res.status(500).json(error);
         });
-    },*/
-
-    login: function (req, res) {
-        res.send("TEST");
     },
+
 
     /**
      * For creating an new user.
