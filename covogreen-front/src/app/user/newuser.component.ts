@@ -6,7 +6,7 @@ import { UserService } from '../../services/user.service';
 @Component({
     selector: 'app-newuser',
     templateUrl: './newuser.component.html',
-    providers: [UserService]
+    providers: [UserService],
 })
 
 export class NewuserComponent implements OnInit {
@@ -31,6 +31,8 @@ export class NewuserComponent implements OnInit {
             street: this.formBulder.control('', Validators.required),
             cp: this.formBulder.control('', Validators.required),
             country: this.formBulder.control('', Validators.required),
+            phone: this.formBulder.control('', Validators.required),
+            is_driver: ""
         });
 
     }

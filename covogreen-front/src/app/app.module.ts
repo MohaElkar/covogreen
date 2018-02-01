@@ -6,6 +6,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule, Http, RequestOptions } from '@angular/http';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule, MatRadioModule, MATERIAL_SANITY_CHECKS} from '@angular/material';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { SelectModule } from 'ng-select';
@@ -39,6 +42,11 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
         HttpModule,
         JsonpModule,
         SelectModule,
+        BrowserAnimationsModule,
+        NoopAnimationsModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatRadioModule,
         ConfirmationPopoverModule.forRoot({
             focusButton: 'confirm'
         })
@@ -60,7 +68,11 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
         GuardService,
         GuardAdminService,
         UserService,
-        AdminService
+        AdminService,
+        {
+            provide: MATERIAL_SANITY_CHECKS,
+            useValue: false
+        }
     ],
     bootstrap: [AppComponent]
 })
