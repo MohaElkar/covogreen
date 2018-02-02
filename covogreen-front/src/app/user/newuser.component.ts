@@ -49,7 +49,7 @@ export class NewuserComponent implements OnInit {
 
     createUser() {
         console.log(this.createUserForm.value);
-
+        console.log(this.createUserForm.value.is_driver);
         /*
         this.userService.createUser(this.createUserForm.value)
             .subscribe(result => {

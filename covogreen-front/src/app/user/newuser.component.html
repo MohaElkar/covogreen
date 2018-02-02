@@ -92,19 +92,16 @@
                 </mat-radio-group>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" *ngIf="checkIsDriver()">
                 <label>Etes-vous véhiculé ?</label>
 
-                <mat-radio-group *ngIf="checkIsDriver()"
-                                 formControlName="have_car"
+                <mat-radio-group formControlName="have_car"
                                  [formGroup]="have_car_ctrl"
                                  (change)="changeHaveCar($event)">
                     <mat-radio-button value="true">Oui</mat-radio-button>
                     <mat-radio-button value="false">Non</mat-radio-button>
                 </mat-radio-group>
             </div>
-
-            <app-newcar *ngIf="checkHaveCar()"></app-newcar>
 
             <div class="form-group">
                 <input  id="passwordCreate" name="password" formControlName="password"
@@ -122,6 +119,41 @@
                         required>
 
                 <p *ngIf="createUserForm.get('password').hasError('validateEqual')" class="alert alert-danger">Les mots de passe doivent correspondre</p>
+            </div>
+
+            <!--<app-newcar *ngIf="checkHaveCar()"></app-newcar>-->
+
+            <div id="newdriver" *ngIf="checkHaveCar()">
+                <h4>Ajouter sa voiture</h4>
+
+                <div class="form-group">
+                    <input  id="licencePlateCreate" name="licencePlate" formControlName="licencePlate"
+                            placeholder="Plaque d'immatriculation"
+                            class="form-control form-control-sm"
+                            type="text">
+                </div>
+
+                <div class="form-group">
+                    <input  id="makeCreate" name="make" formControlName="make"
+                            placeholder="Marque"
+                            class="form-control form-control-sm"
+                            type="text">
+                </div>
+
+                <div class="form-group">
+                    <input  id="modelCreate" name="model" formControlName="model"
+                            placeholder="Model"
+                            class="form-control form-control-sm"
+                            type="text">
+                </div>
+
+                <div class="form-group">
+                    <input  id="passengersCreate" name="passengers" formControlName="passengers"
+                            placeholder="Nombre de places"
+                            class="form-control form-control-sm"
+                            type="number">
+                </div>
+
             </div>
 
             <div class="form-group">
