@@ -18,6 +18,7 @@ export class NewuserComponent implements OnInit {
     public is_driver_ctrl: FormControl;
 
     public createUserForm: FormGroup;
+    //public createCarForm: FormGroup;
 
     constructor(
         private formBulder: FormBuilder,
@@ -42,14 +43,26 @@ export class NewuserComponent implements OnInit {
             country: this.formBulder.control('', Validators.required),
             phone: this.formBulder.control('', Validators.required),
             is_driver: "",
-            have_car: ""
+            have_car: "",
+
+            licencePlate: this.formBulder.control(''),
+            make: this.formBulder.control(''),
+            model: this.formBulder.control(''),
+            capacity: this.formBulder.control('')
         });
+
+        /*
+        this.createCarForm = this.formBulder.group({
+            licencePlate: this.formBulder.control('', Validators.required),
+            make: this.formBulder.control('', Validators.required),
+            capacity: this.formBulder.control('', Validators.required)
+        });
+        */
 
     }
 
     createUser() {
         console.log(this.createUserForm.value);
-        console.log(this.createUserForm.value.is_driver);
         /*
         this.userService.createUser(this.createUserForm.value)
             .subscribe(result => {

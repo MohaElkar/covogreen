@@ -148,12 +148,11 @@
                 </div>
 
                 <div class="form-group">
-                    <input  id="passengersCreate" name="passengers" formControlName="passengers"
-                            placeholder="Nombre de places"
-                            class="form-control form-control-sm"
-                            type="number">
+                    <label>Capacité de la voiture</label>
+                    <mat-slider min="1" max="5" step="1" thumbLabel
+                                id="capacityCreate" name="capacity" formControlName="capacity">
+                    </mat-slider>
                 </div>
-
             </div>
 
             <div class="form-group">

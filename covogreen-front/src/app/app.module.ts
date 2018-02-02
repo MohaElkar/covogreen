@@ -8,7 +8,7 @@ import { HttpModule, JsonpModule, Http, RequestOptions } from '@angular/http';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatRadioModule, MATERIAL_SANITY_CHECKS} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatRadioModule, MATERIAL_SANITY_CHECKS, MatSliderModule, MatFormFieldModule} from '@angular/material';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { SelectModule } from 'ng-select';
@@ -48,6 +48,8 @@ import { NewCarComponent } from './car/newcar.component';
         MatButtonModule,
         MatCheckboxModule,
         MatRadioModule,
+        MatSliderModule,
+        MatFormFieldModule,
         ConfirmationPopoverModule.forRoot({
             focusButton: 'confirm'
         })
