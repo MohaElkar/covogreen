@@ -45,6 +45,7 @@
     "fs": "0.0.1-security",
     "hammerjs": "^2.0.8",
     "jsonwebtoken": "^8.1.0",
+    "md5": "^2.2.1",
     "mysql": "github:mysqljs/mysql",
     "mysql2": "^1.5.1",
     "ng-select": "^1.0.0-rc.3",

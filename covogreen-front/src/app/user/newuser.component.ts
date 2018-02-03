@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { TextEqualityValidatorModule } from 'ngx-text-equality-validator';
 import { UserService } from '../../services/user.service';
+import { User } from '../../class/user';
+import * as md5 from 'md5';
 
 @Component({
     selector: 'app-newuser',
@@ -10,6 +12,8 @@ import { UserService } from '../../services/user.service';
 })
 
 export class NewuserComponent implements OnInit {
+
+    public user: User;
 
     public have_car: boolean = false;
     public have_car_ctrl: FormControl;
@@ -40,7 +44,6 @@ export class NewuserComponent implements OnInit {
             city: this.formBulder.control('', Validators.required),
             address: this.formBulder.control('', Validators.required),
             cp: this.formBulder.control('', Validators.required),
-            country: this.formBulder.control('', Validators.required),
             phone: this.formBulder.control('', Validators.required),
             is_driver: "",
             have_car: "",
@@ -62,13 +65,15 @@ export class NewuserComponent implements OnInit {
     }
 
     createUser() {
-        console.log(this.createUserForm.value);
-        /*
+        this.user = this.createUserForm.value;
+        this.user.password = md5(this.createUserForm.value.password);
+        //console.log(this.user);
+
         this.userService.createUser(this.createUserForm.value)
             .subscribe(result => {
                 alert(result);
             });
-        */
+
     }
 
     changeIsDriver($event): void {

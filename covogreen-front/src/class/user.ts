@@ -1,36 +1,40 @@
 export class User {
     public id_user: number;
+    public lastName: string;
+    public firstName: string;
     public username: string;
-    public password: string;
     public email: string;
-    public lastname: string;
-    public firstname: string;
+    public password: string;
+    public address: string;
     public city: string;
-    public street: string;
-    public cp: number;
-    public country: string;
+    public cp: string;
+    public phone: string;
+    public is_driver: boolean;
+    public id_car: number;
 
     constructor(
         id_user: number,
+        lastName: string,
+        firstName: string,
         username: string,
-        password: string,
         email: string,
-        lastname: string,
-        firstname: string,
+        password: string,
+        address: string,
         city: string,
-        street: string,
-        cp: number,
-        country: string
+        cp: string,
+        phone: string,
+        is_driver: boolean
     ) {
         this.id_user = id_user;
+        this.lastName = lastName;
+        this.firstName = firstName;
         this.username = username;
-        this.password = password;
         this.email = email;
-        this.lastname = lastname;
-        this.firstname = firstname;
+        this.password = password;
+        this.address = address;
         this.city = city;
-        this.street = street;
         this.cp = cp;
-        this.country = country;
+        this.phone = phone;
+        this.is_driver = is_driver;
     }
 }
