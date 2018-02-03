@@ -27,6 +27,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminCategoryComponent } from './admin/admin.category.component';
 import { AdminProductComponent } from './admin/admin.product.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { RechercheFormComponent } from './recherche-form/recherche-form.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
         AdminComponent,
         AdminCategoryComponent,
         AdminProductComponent,
-        LoginAdminComponent
+        LoginAdminComponent,
+        RechercheFormComponent
     ],
     providers: [
         AuthentificationService,
