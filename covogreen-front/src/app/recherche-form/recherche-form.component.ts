@@ -19,17 +19,17 @@ export class RechercheFormComponent implements OnInit {
 
    onSubmit() {
        // On effectue une redirection vers la page /recherche en lui passant en parametre les valeurs renseigné dans la form.
-       this.router.navigateByUrl('/recherche', {
+       this.router.navigate(['recherche'], {
            queryParams: {
-                depart: this.rechercheFormEnt.depart,
-                destination: this.rechercheFormEnt.destination,
-                date: this.rechercheFormEnt.dateDepart
+                'depart': this.rechercheFormEnt.depart,
+                'destination': this.rechercheFormEnt.destination,
+                'dateDepart': this.rechercheFormEnt.dateDepart
            }
        });
    }
 
   // A supprimer.
-  /*get diagnostic() {
+  get diagnostic() {
     return JSON.stringify(this.rechercheFormEnt);
-  }*/
+  }
 }
