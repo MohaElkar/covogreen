@@ -28,6 +28,7 @@ import { AdminCategoryComponent } from './admin/admin.category.component';
 import { AdminProductComponent } from './admin/admin.product.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { RechercheFormComponent } from './recherche-form/recherche-form.component';
+import { RecherchePageComponent } from './recherche-page/recherche-page.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { RechercheFormComponent } from './recherche-form/recherche-form.componen
         AdminCategoryComponent,
         AdminProductComponent,
         LoginAdminComponent,
-        RechercheFormComponent
+        RechercheFormComponent,
+        RecherchePageComponent
     ],
     providers: [
         AuthentificationService,
