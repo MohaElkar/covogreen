@@ -1,6 +1,6 @@
 <h3>Rechercher un trajet :</h3>
 
-{{diagnostic}}
+<!-- {{diagnostic}} -->
 
 <div id="formulaireRecherche">
   <form  (ngSubmit)="onSubmit()" #rechercheForm="ngForm">
@@ -23,13 +23,13 @@
       <div class="col-lg-2">
         <div class="form-group">
           <label for="inputDate">Date :</label>
-          <input [(ngModel)]="rechercheFormEnt.dateDepart" type="date" id="inputDate" name="date" class="form-control" placeholder="Départ">
+          <input [(ngModel)]="rechercheFormEnt.date_trajet" type="date" id="inputDate" name="date" class="form-control" placeholder="Départ" required>
         </div>
       </div>
 
       <div class="col-lg-2">
         <div class="form-check form-check-inline checkboxPlaceLibreBox">
-          <input [(ngModel)]="rechercheFormEnt.placeLibre" type="checkbox" id="inputPlaceLibre" name="placeLibre" class="form-check-input" value="Place libre">
+          <input [(ngModel)]="rechercheFormEnt.place_libre" type="checkbox" id="inputPlaceLibre" name="placeLibre" class="form-check-input" value="Place libre">
           <label class="form-check-label" for="inputPlaceLibre">Place libre</label>
         </div>
       </div>

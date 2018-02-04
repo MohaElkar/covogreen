@@ -23,7 +23,8 @@ export class RechercheFormComponent implements OnInit {
            queryParams: {
                 'depart': this.rechercheFormEnt.depart,
                 'destination': this.rechercheFormEnt.destination,
-                'dateDepart': this.rechercheFormEnt.dateDepart
+                'date_trajet': this.rechercheFormEnt.date_trajet,
+                'place_libre': this.rechercheFormEnt.place_libre
            }
        });
    }

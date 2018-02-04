@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule, Http, RequestOptions } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
@@ -19,6 +20,7 @@ import {GuardService} from '../services/guard.service';
 import {GuardAdminService} from '../services/guard-admin.service';
 import {UserService} from '../services/user.service';
 import {AdminService} from '../services/admin.service';
+import { RechercheTrajetService } from '../services/recherche-trajet.service';
 
 import { UserComponent } from './user/user.component';
 import { NewuserComponent } from './user/newuser.component';
@@ -34,6 +36,7 @@ import { RecherchePageComponent } from './recherche-page/recherche-page.componen
 @NgModule({
     imports: [
         BrowserModule,
+        HttpClientModule,
         AppRoutingModule,
         ReactiveFormsModule,
         FormsModule,
