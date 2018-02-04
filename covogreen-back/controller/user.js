@@ -1,4 +1,5 @@
 var User = require("../database/models/user");
+var sequelize = require("../database/db");
 var co = require('co');
 var jwt = require('jsonwebtoken');
 var fs = require("fs");
@@ -45,11 +46,56 @@ var LoginController = {
 
 
     /**
-     * For creating an new user.
+     * For creating an new user and his car.
      * @param req
      * @param res
      */
     create: function  (req, res) {
+
+        if( JSON.parse(req.body.user.have_car) ) {
+
+            var values = {
+                "firstName": req.body.user.firstName,
+                "lastName": req.body.user.lastName,
+                "username": req.body.user.username,
+                "email": req.body.user.email,
+                "password": req.body.user.password,
+                "address": req.body.user.address,
+                "city": req.body.user.city,
+                "cp": req.body.user.cp,
+                "phone": req.body.user.phone,
+                "is_driver": JSON.parse(req.body.user.is_driver),
+
+                "licencePlate": req.body.user.licencePlate,
+                "make": req.body.user.make,
+                "model": req.body.user.model
+            };
+
+            sequelize.query('CALL createUserWithCar(:firstName, :lastName, :username, :email, :password, :address, :city, :cp, :phone, :is_driver, ' +
+                ':licencePlate, :make, :model'  +
+            ')',
+            {replacements: values} )
+            .then(function (response) {
+                console.log(response);
+                res.status(200).send("Ajout de l'utilisateur et de sa voiture OK");
+            })
+            .catch(function (error) {
+                console.log(error);
+                res.status(500).send("Echec de l'ajout de l'utilisateur et de sa voiture");
+            });
+        }
+        else {
+            User.create(req.body.user)
+                .then(function (response) {
+                    res.status(200).send("Ajout de l'utilisateur OK");
+                })
+                .catch(function (error) {
+                    res.status(500).send("Echec de l'ajout de l'utilisateur");
+                });
+        }
+    }
+
+    /*create: function  (req, res) {
 
         User.create(req.body)
             .then(function (response) {
@@ -58,7 +104,7 @@ var LoginController = {
             .catch(function (error) {
                 res.status(500).send("Echec de l'ajout de l'utilisateur");
             });
-    },
+    },*/
 };
 
 

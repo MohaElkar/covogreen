@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../class/user';
+import { Car } from '../class/car';
 
 @Injectable()
 export class UserService {
@@ -15,7 +16,18 @@ export class UserService {
 		this.uri = "http://localhost:1313/user";
 	}
 
-    createUser(user: User): Observable<string> {
+    createUser(user: User, car: Car): Observable<string> {
+        let headers = new Headers({ "Content-Type": "application/json" });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post(this.uri, JSON.stringify({user, car}), options)
+            .map((response: Response) => {
+                console.log(response.text());
+                return response.text();
+            });
+    }
+
+    /*createUser(user: User): Observable<string> {
         let headers = new Headers({ "Content-Type": "application/json" });
         let options = new RequestOptions({ headers: headers });
 
@@ -24,7 +36,7 @@ export class UserService {
                 console.log(response.text());
                 return response.text();
             });
-    }
+    }*/
 
     updateUser(user: User): Observable<string> {
         let headers = new Headers({ "Content-Type": "application/json" });

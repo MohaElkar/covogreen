@@ -25,7 +25,6 @@ export class NewuserComponent implements OnInit {
     public is_driver_ctrl: FormControl;
 
     public createUserForm: FormGroup;
-    //public createCarForm: FormGroup;
 
     constructor(
         private formBulder: FormBuilder,
@@ -58,17 +57,20 @@ export class NewuserComponent implements OnInit {
             capacity: this.formBulder.control('')
         });
 
-        /*
-        this.createCarForm = this.formBulder.group({
-            licencePlate: this.formBulder.control('', Validators.required),
-            make: this.formBulder.control('', Validators.required),
-            capacity: this.formBulder.control('', Validators.required)
-        });
-        */
-
     }
 
     createUser() {
+        this.user = this.createUserForm.value;
+        this.car = this.createUserForm.value;
+        this.user.password = md5(this.createUserForm.value.password);
+
+        this.userService.createUser(this.user, this.car)
+            .subscribe(result => {
+                alert(result);
+            });
+    }
+
+    /*createUser() {
         this.user = this.createUserForm.value;
         this.car = this.createUserForm.value;
         this.user.password = md5(this.createUserForm.value.password);
@@ -77,24 +79,22 @@ export class NewuserComponent implements OnInit {
             JSON.parse(this.createUserForm.value.have_car)
         );
 
-        /*
         this.userService.createUser(this.createUserForm.value)
             .subscribe(result => {
                 alert(result);
             });
-        */
-    }
+    }*/
 
-    createCar(have_car: boolean) {
+    /*createCar(have_car: boolean) {
         if(have_car){
             console.log(this.car);
 
-            /*this.carService.createCar(this.car)
+            this.carService.createCar(this.car)
                 .subscribe(result => {
                     console.log(result);
-                });*/
+                });
         }
-    }
+    }*/
 
     changeIsDriver($event): void {
         this.is_driver = JSON.parse($event.value);
