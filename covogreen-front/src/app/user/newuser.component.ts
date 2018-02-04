@@ -2,18 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { TextEqualityValidatorModule } from 'ngx-text-equality-validator';
 import { UserService } from '../../services/user.service';
+import { CarService } from '../../services/car.service';
 import { User } from '../../class/user';
+import { Car } from '../../class/car';
 import * as md5 from 'md5';
 
 @Component({
     selector: 'app-newuser',
     templateUrl: './newuser.component.html',
-    providers: [UserService],
+    providers: [UserService, CarService],
 })
 
 export class NewuserComponent implements OnInit {
 
     public user: User;
+    public car: Car;
 
     public have_car: boolean = false;
     public have_car_ctrl: FormControl;
@@ -26,7 +29,8 @@ export class NewuserComponent implements OnInit {
 
     constructor(
         private formBulder: FormBuilder,
-        private userService: UserService
+        private userService: UserService,
+        private carService: CarService
     ) { }
 
     ngOnInit() {
@@ -66,14 +70,30 @@ export class NewuserComponent implements OnInit {
 
     createUser() {
         this.user = this.createUserForm.value;
+        this.car = this.createUserForm.value;
         this.user.password = md5(this.createUserForm.value.password);
-        //console.log(this.user);
 
+        this.createCar(
+            JSON.parse(this.createUserForm.value.have_car)
+        );
+
+        /*
         this.userService.createUser(this.createUserForm.value)
             .subscribe(result => {
                 alert(result);
             });
+        */
+    }
 
+    createCar(have_car: boolean) {
+        if(have_car){
+            console.log(this.car);
+
+            /*this.carService.createCar(this.car)
+                .subscribe(result => {
+                    console.log(result);
+                });*/
+        }
     }
 
     changeIsDriver($event): void {

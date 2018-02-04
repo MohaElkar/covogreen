@@ -21,6 +21,7 @@ import {AuthentificationService} from '../services/authentification.service';
 import {GuardService} from '../services/guard.service';
 import {GuardAdminService} from '../services/guard-admin.service';
 import {UserService} from '../services/user.service';
+import {CarService} from '../services/car.service';
 import {AdminService} from '../services/admin.service';
 
 import { UserComponent } from './user/user.component';
@@ -71,6 +72,7 @@ import { NewCarComponent } from './car/newcar.component';
         GuardService,
         GuardAdminService,
         UserService,
+        CarService,
         AdminService,
         {
             provide: MATERIAL_SANITY_CHECKS,
