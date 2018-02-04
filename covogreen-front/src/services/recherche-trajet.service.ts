@@ -16,8 +16,16 @@ export class RechercheTrajetService {
 
   constructor( private http: HttpClient) { }
 
-  getTrajets(recherche: RechercheFormEnt): Observable<any> {
-    // requete vers le backend /recherche en post avec les information de la recherche.
-      return this.http.post(this.url + 'recherche', recherche, this.httpOptions);
+  getTrajets(recherche: RechercheFormEnt, page: number): Observable<any> {
+        // requete vers le backend /recherche en post avec les information de la recherche.
+        let jsonData = {
+            'depart' : recherche.depart,
+            'destination' : recherche.destination,
+            'date_trajet' : recherche.date_trajet,
+            'place_libre' : recherche.place_libre,
+            'page' : page,
+        }
+
+        return this.http.post(this.url + 'recherche', jsonData, this.httpOptions);
   }
 }

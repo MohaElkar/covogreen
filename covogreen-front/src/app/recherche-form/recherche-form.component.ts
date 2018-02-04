@@ -24,7 +24,8 @@ export class RechercheFormComponent implements OnInit {
                 'depart': this.rechercheFormEnt.depart,
                 'destination': this.rechercheFormEnt.destination,
                 'date_trajet': this.rechercheFormEnt.date_trajet,
-                'place_libre': this.rechercheFormEnt.place_libre
+                'place_libre': this.rechercheFormEnt.place_libre,
+                'page': 1
            }
        });
    }
