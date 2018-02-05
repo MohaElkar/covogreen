@@ -58,7 +58,6 @@ import {CreateJourneyComponent} from './journey/create-journey/create-journey.co
         MatRadioModule,
         MatSliderModule,
         MatFormFieldModule,
-        //TextEqualityValidatorModule,
         ConfirmationPopoverModule.forRoot({
             focusButton: 'confirm'
         })
@@ -76,7 +75,8 @@ import {CreateJourneyComponent} from './journey/create-journey/create-journey.co
         NewCarComponent,
         CreateJourneyComponent,
         RechercheFormComponent,
-        RecherchePageComponent
+        RecherchePageComponent,
+        NewCarComponent
     ],
     providers: [
         AuthentificationService,
