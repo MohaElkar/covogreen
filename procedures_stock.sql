@@ -1,4 +1,4 @@
--- Creationg user and/or his car --
+-- Creating user and/or his car --
 
 DELIMITER |
 CREATE PROCEDURE createUserWithCar(
