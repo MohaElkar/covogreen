@@ -14,6 +14,7 @@ import {NewuserComponent} from '../user/newuser.component';
 
 import {AdminComponent} from '../admin/admin.component';
 import {CreateJourneyComponent} from '../journey/create-journey/create-journey.component';
+import {RecherchePageComponent} from '../recherche-page/recherche-page.component';
 
 const routes: Routes = [
     { path: '', component: DashboardComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
     { path: 'user', component: UserComponent, canActivate: [GuardService] },
 
     { path: 'journey/create', component: CreateJourneyComponent, canActivate: [GuardService] },
+    { path: 'recherche', component: RecherchePageComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

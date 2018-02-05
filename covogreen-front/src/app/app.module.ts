@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule, Http, RequestOptions } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -24,6 +25,7 @@ import {GuardAdminService} from '../services/guard-admin.service';
 import {UserService} from '../services/user.service';
 import {CarService} from '../services/car.service';
 import {AdminService} from '../services/admin.service';
+import { RechercheTrajetService } from '../services/recherche-trajet.service';
 
 import { UserComponent } from './user/user.component';
 import { NewuserComponent } from './user/newuser.component';
@@ -32,6 +34,8 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminCategoryComponent } from './admin/admin.category.component';
 import { AdminProductComponent } from './admin/admin.product.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { RechercheFormComponent } from './recherche-form/recherche-form.component';
+import { RecherchePageComponent } from './recherche-page/recherche-page.component';
 
 import { NewCarComponent } from './car/newcar.component';
 import {CreateJourneyComponent} from './journey/create-journey/create-journey.component';
@@ -40,6 +44,7 @@ import {CreateJourneyComponent} from './journey/create-journey/create-journey.co
 @NgModule({
     imports: [
         BrowserModule,
+        HttpClientModule,
         AppRoutingModule,
         ReactiveFormsModule,
         FormsModule,
@@ -69,7 +74,9 @@ import {CreateJourneyComponent} from './journey/create-journey/create-journey.co
         AdminProductComponent,
         LoginAdminComponent,
         NewCarComponent,
-        CreateJourneyComponent
+        CreateJourneyComponent,
+        RechercheFormComponent,
+        RecherchePageComponent
     ],
     providers: [
         AuthentificationService,
