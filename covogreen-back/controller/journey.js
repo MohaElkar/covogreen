@@ -26,7 +26,7 @@ var JourneyController = {
             id_driver: 1
         })
             .then(function (response) {
-
+                response.status(200).send('Trajet ajouté');
             })
             .catch(function (error) {
                 res.status(500).json(error);

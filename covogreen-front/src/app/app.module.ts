@@ -32,6 +32,7 @@ import { AdminProductComponent } from './admin/admin.product.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 
 import { NewCarComponent } from './car/newcar.component';
+import {CreateJourneyComponent} from './journey/create-journey/create-journey.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { NewCarComponent } from './car/newcar.component';
         AdminCategoryComponent,
         AdminProductComponent,
         LoginAdminComponent,
-        NewCarComponent
+        NewCarComponent,
+        CreateJourneyComponent
     ],
     providers: [
         AuthentificationService,
