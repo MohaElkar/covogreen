@@ -13,10 +13,13 @@ import {UserComponent} from '../user/user.component';
 import {NewuserComponent} from '../user/newuser.component';
 
 import {AdminComponent} from '../admin/admin.component';
+
 import {RecherchePageComponent} from '../recherche-page/recherche-page.component';
+
 
 const routes: Routes = [
     { path: '', component: DashboardComponent},
+	
     { path: 'newuser', component: NewuserComponent },
 
     { path: 'admin', component: AdminComponent, canActivate: [GuardAdminService] },

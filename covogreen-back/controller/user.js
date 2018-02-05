@@ -43,6 +43,7 @@ var LoginController = {
         });
     },
 
+
     /**
      * For creating an new user.
      * @param req

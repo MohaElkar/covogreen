@@ -1,27 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators, Validator } from '@angular/forms';
+import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { TextEqualityValidatorModule } from 'ngx-text-equality-validator';
 import { UserService } from '../../services/user.service';
+import { User } from '../../class/user';
+import * as md5 from 'md5';
 
 @Component({
     selector: 'app-newuser',
     templateUrl: './newuser.component.html',
-    providers: [UserService]
+    providers: [UserService],
 })
 
 export class NewuserComponent implements OnInit {
 
-    public username_ctrl: FormControl;
-    public email_ctrl: FormControl;
-    public firstname_ctrl: FormControl;
-    public lastname_ctrl: FormControl;
-    public password_ctrl: FormControl;
-    public confirmPassword_ctrl: FormControl;
-    public city_ctrl: FormControl;
-    public street_ctrl: FormControl;
-    public cp_ctrl: FormControl;
-    public country_ctrl: FormControl;
+    public user: User;
+
+    public have_car: boolean = false;
+    public have_car_ctrl: FormControl;
+
+    public is_driver: boolean;
+    public is_driver_ctrl: FormControl;
+
     public createUserForm: FormGroup;
+    //public createCarForm: FormGroup;
 
     constructor(
         private formBulder: FormBuilder,
@@ -30,37 +31,64 @@ export class NewuserComponent implements OnInit {
 
     ngOnInit() {
 
-        this.username_ctrl = this.formBulder.control('', Validators.required);
-        this.email_ctrl = this.formBulder.control('', Validators.required);
-        this.firstname_ctrl = this.formBulder.control('', Validators.required);
-        this.lastname_ctrl = this.formBulder.control('', Validators.required);
-        this.password_ctrl = this.formBulder.control('', Validators.required);
-        this.confirmPassword_ctrl = this.formBulder.control('', Validators.required);
-        this.city_ctrl = this.formBulder.control('', Validators.required);
-        this.street_ctrl = this.formBulder.control('', Validators.required);
-        this.cp_ctrl = this.formBulder.control('', Validators.required);
-        this.country_ctrl = this.formBulder.control('', Validators.required);
-
+        this.have_car_ctrl = this.formBulder.control('');
+        this.is_driver_ctrl = this.formBulder.control('');
 
         this.createUserForm = this.formBulder.group({
-            username: this.username_ctrl,
-            email: this.email_ctrl,
-            firstname: this.firstname_ctrl,
-            lastname: this.lastname_ctrl,
-            password: this.password_ctrl,
-            confirmPassword: this.confirmPassword_ctrl,
-            city: this.city_ctrl,
-            street: this.street_ctrl,
-            cp: this.cp_ctrl,
-            country: this.country_ctrl
+            username: this.formBulder.control('', Validators.required),
+            email: this.formBulder.control('', Validators.required),
+            firstName: this.formBulder.control('', Validators.required),
+            lastName: this.formBulder.control('', Validators.required),
+            password: this.formBulder.control('', Validators.required),
+            confirmPassword: this.formBulder.control('', Validators.required),
+            city: this.formBulder.control('', Validators.required),
+            address: this.formBulder.control('', Validators.required),
+            cp: this.formBulder.control('', Validators.required),
+            phone: this.formBulder.control('', Validators.required),
+            is_driver: "",
+            have_car: "",
+
+            licencePlate: this.formBulder.control(''),
+            make: this.formBulder.control(''),
+            model: this.formBulder.control(''),
+            capacity: this.formBulder.control('')
         });
+
+        /*
+        this.createCarForm = this.formBulder.group({
+            licencePlate: this.formBulder.control('', Validators.required),
+            make: this.formBulder.control('', Validators.required),
+            capacity: this.formBulder.control('', Validators.required)
+        });
+        */
 
     }
 
     createUser() {
+        this.user = this.createUserForm.value;
+        this.user.password = md5(this.createUserForm.value.password);
+        //console.log(this.user);
+
         this.userService.createUser(this.createUserForm.value)
             .subscribe(result => {
                 alert(result);
             });
+
+    }
+
+    changeIsDriver($event): void {
+        this.is_driver = JSON.parse($event.value);
+    }
+
+    changeHaveCar($event): void {
+        this.have_car = JSON.parse($event.value);
+    }
+
+    checkIsDriver(): boolean {
+        return this.is_driver;
+    }
+
+    checkHaveCar(): boolean {
+        return this.have_car;
     }
 }

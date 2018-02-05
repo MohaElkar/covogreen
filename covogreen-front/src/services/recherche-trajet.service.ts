@@ -26,6 +26,8 @@ export class RechercheTrajetService {
             'page' : page,
         }
 
+        console.log(jsonData);
+
         return this.http.post(this.url + 'recherche', jsonData, this.httpOptions);
   }
 }

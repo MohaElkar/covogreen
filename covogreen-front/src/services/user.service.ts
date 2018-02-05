@@ -12,14 +12,14 @@ export class UserService {
         private http: Http,
     )
     {
-		this.uri = "http://localhost:3000/";
+		this.uri = "http://localhost:1313/user";
 	}
 
     createUser(user: User): Observable<string> {
         let headers = new Headers({ "Content-Type": "application/json" });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.uri + "user", JSON.stringify(user), options)
+        return this.http.post(this.uri, JSON.stringify(user), options)
             .map((response: Response) => {
                 console.log(response.text());
                 return response.text();
@@ -30,7 +30,7 @@ export class UserService {
         let headers = new Headers({ "Content-Type": "application/json" });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.put(this.uri + "user", JSON.stringify(user), options)
+        return this.http.put(this.uri, JSON.stringify(user), options)
             .map((response: Response) => {
                 console.log(response.text());
                 return response.text();
@@ -41,7 +41,7 @@ export class UserService {
         let headers = new Headers({ "Content-Type": "application/json" });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.put(this.uri + "user/delete", JSON.stringify(user), options)
+        return this.http.put(this.uri, JSON.stringify(user), options)
             .map((response: Response) => {
                 console.log(response.text());
                 return response.text();
@@ -53,7 +53,7 @@ export class UserService {
         let options = new RequestOptions({ headers: headers });
 
         let user = localStorage.getItem('currentUser');
-        return this.http.post(this.uri + "user/get", user, options)
+        return this.http.post(this.uri, user, options)
             .map((response: Response) => {
                 var result = response.text();
                 return JSON.parse(result);
@@ -64,7 +64,7 @@ export class UserService {
         let headers = new Headers({ "Content-Type": "application/json" });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.put(this.uri + "user/password", JSON.stringify(user), options)
+        return this.http.put(this.uri + "password", JSON.stringify(user), options)
             .map((response: Response) => {
                 console.log(response.text());
                 return response.text();

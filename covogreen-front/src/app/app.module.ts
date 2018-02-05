@@ -7,6 +7,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule, Http, RequestOptions } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule, MatRadioModule, MATERIAL_SANITY_CHECKS, MatSliderModule, MatFormFieldModule} from '@angular/material';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { SelectModule } from 'ng-select';
@@ -32,6 +35,8 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { RechercheFormComponent } from './recherche-form/recherche-form.component';
 import { RecherchePageComponent } from './recherche-page/recherche-page.component';
 
+import { NewCarComponent } from './car/newcar.component';
+
 
 @NgModule({
     imports: [
@@ -43,6 +48,13 @@ import { RecherchePageComponent } from './recherche-page/recherche-page.componen
         HttpModule,
         JsonpModule,
         SelectModule,
+        BrowserAnimationsModule,
+        NoopAnimationsModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatRadioModule,
+        MatSliderModule,
+        MatFormFieldModule,
         ConfirmationPopoverModule.forRoot({
             focusButton: 'confirm'
         })
@@ -58,14 +70,19 @@ import { RecherchePageComponent } from './recherche-page/recherche-page.componen
         AdminProductComponent,
         LoginAdminComponent,
         RechercheFormComponent,
-        RecherchePageComponent
+        RecherchePageComponent,
+        NewCarComponent
     ],
     providers: [
         AuthentificationService,
         GuardService,
         GuardAdminService,
         UserService,
-        AdminService
+        AdminService,
+        {
+            provide: MATERIAL_SANITY_CHECKS,
+            useValue: false
+        }
     ],
     bootstrap: [AppComponent]
 })
