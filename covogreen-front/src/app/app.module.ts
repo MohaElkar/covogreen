@@ -12,6 +12,7 @@ import {MatButtonModule, MatCheckboxModule, MatRadioModule, MATERIAL_SANITY_CHEC
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { SelectModule } from 'ng-select';
+//import { TextEqualityValidatorModule } from 'ngx-text-equality-validator';
 
 import {AppComponent} from './app.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
@@ -51,6 +52,7 @@ import { NewCarComponent } from './car/newcar.component';
         MatRadioModule,
         MatSliderModule,
         MatFormFieldModule,
+        //TextEqualityValidatorModule,
         ConfirmationPopoverModule.forRoot({
             focusButton: 'confirm'
         })

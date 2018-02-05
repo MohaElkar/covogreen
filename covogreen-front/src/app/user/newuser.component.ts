@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
-import { TextEqualityValidatorModule } from 'ngx-text-equality-validator';
 import { UserService } from '../../services/user.service';
 import { CarService } from '../../services/car.service';
 import { User } from '../../class/user';
 import { Car } from '../../class/car';
 import * as md5 from 'md5';
+//https://github.com/AngularClass/match-control [match passwords]
 
 @Component({
     selector: 'app-newuser',
