@@ -14,7 +14,8 @@ CREATE PROCEDURE createUserWithCar(
 
 	_licencePlate VARCHAR(255),
 	_make VARCHAR(255),
-	_model VARCHAR(255)
+	_model VARCHAR(255),
+	_capacity INTEGER
 )
 BEGIN
 
@@ -22,8 +23,8 @@ BEGIN
 
 	IF ( _licencePlate != NULL OR _licencePlate != '' ) THEN
 
-	    INSERT INTO cars (licencePlate, make, model, createdAt, updatedAt)
-	    VALUES(_licencePlate, _make, _model, SYSDATE(), SYSDATE());
+	    INSERT INTO cars (licencePlate, make, model, capacity, createdAt, updatedAt)
+	    VALUES(_licencePlate, _make, _model, _capacity, SYSDATE(), SYSDATE());
 
 	END IF;
 
@@ -32,8 +33,8 @@ BEGIN
 	IF ( lastCar != NULL OR lastCar != '' ) THEN
 
     	    INSERT INTO users
-    	            (firstName, lastName, username, email, password, address, city, cp, phone, is_driver, id_car, createdAt, updatedAt)
-    	    VALUES  (_firstName, _lastName, _username, _email, _password, _address, _city, _cp, _phone, _is_driver, lastCar, SYSDATE(), SYSDATE());
+    	            (firstName, lastName, username, email, password, address, city, cp, phone, privilege, is_driver, id_car, createdAt, updatedAt)
+    	    VALUES  (_firstName, _lastName, _username, _email, _password, _address, _city, _cp, _phone, 1,_is_driver, lastCar, SYSDATE(), SYSDATE());
 
     END IF;
 

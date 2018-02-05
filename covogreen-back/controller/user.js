@@ -68,11 +68,12 @@ var LoginController = {
 
                 "licencePlate": req.body.user.licencePlate,
                 "make": req.body.user.make,
-                "model": req.body.user.model
+                "model": req.body.user.model,
+                "capacity":  req.body.user.capacity
             };
 
             sequelize.query('CALL createUserWithCar(:firstName, :lastName, :username, :email, :password, :address, :city, :cp, :phone, :is_driver, ' +
-                ':licencePlate, :make, :model'  +
+                ':licencePlate, :make, :model, :capacity'  +
             ')',
             {replacements: values} )
             .then(function (response) {

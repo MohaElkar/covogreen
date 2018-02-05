@@ -16,6 +16,9 @@ const Car =  db.define('car',
         },
         model: {
             type: Sequelize.STRING
+        },
+        capacity: {
+            type: Sequelize.INTEGER
         }
     }
 );
