@@ -13,6 +13,7 @@ import {UserComponent} from '../user/user.component';
 import {NewuserComponent} from '../user/newuser.component';
 
 import {AdminComponent} from '../admin/admin.component';
+import {CreateJourneyComponent} from '../journey/create-journey/create-journey.component';
 
 const routes: Routes = [
     { path: '', component: DashboardComponent},
@@ -21,6 +22,8 @@ const routes: Routes = [
     { path: 'admin', component: AdminComponent, canActivate: [GuardAdminService] },
 
     { path: 'user', component: UserComponent, canActivate: [GuardService] },
+
+    { path: 'journey/create', component: CreateJourneyComponent, canActivate: [GuardService] },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

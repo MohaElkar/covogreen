@@ -15,6 +15,9 @@ const Journey = db.define('journey',
         destination:{
             type: Sequelize.STRING
         },
+        seats_available:{
+            type: Sequelize.INTEGER
+        },
         date_journey:{
             type: Sequelize.DATE
         }
