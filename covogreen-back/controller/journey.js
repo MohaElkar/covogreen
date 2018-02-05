@@ -21,11 +21,12 @@ var JourneyController = {
         Journey.create({
             origin: req.body.origin,
             destination: req.body.destination,
+            seats_available: req.body.seats_available,
             date_journey: req.body.date_journey,
-            id_driver: req.body.id_driver
+            id_driver: 1
         })
             .then(function (response) {
-               res.send('Trajet ajouté');
+
             })
             .catch(function (error) {
                 res.status(500).json(error);
