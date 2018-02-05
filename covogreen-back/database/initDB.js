@@ -1,9 +1,9 @@
 var co = require('co');
 
-var Car = require('/models/car');
-var User = require('/models/user');
-var Journey = require('/models/journey');
-var Participation = require('/models/participation');
+var Car = require('./models/car');
+var User = require('./models/user');
+var Journey = require('./models/journey');
+var Participation = require('./models/participation');
 
 var initDB = co(
     function * (){
