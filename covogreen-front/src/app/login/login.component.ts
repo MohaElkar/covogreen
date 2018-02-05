@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-
 import { AuthentificationService } from '../../services/authentification.service';
+import * as md5 from 'md5';
 
 @Component({
 	selector: 'app-login',
@@ -25,15 +25,15 @@ export class LoginComponent implements OnInit {
 
     login(username, password) {
 
-		this.authenticationService.login(username, password)
+		this.authenticationService.login(username, md5(password))
 			.subscribe(result => {
                 console.log(result);
 				if (result === true) {
 					this.router.navigate(['/']);
 				}
             },
-            //err => alert(err.text())
-            err => console.log(err)
+            err => alert(err.text())
+            //err => console.log(err)
         );
     }
 

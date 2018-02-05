@@ -30,7 +30,7 @@ export class UserComponent implements OnInit {
     public firstname: string;
     public city: string;
     public street: string;
-    public cp: number;
+    public cp: string;
     public country: string;
 
     public username_ctrl: FormControl;
@@ -62,21 +62,20 @@ export class UserComponent implements OnInit {
 
         this.username = this.user.username;
         this.email = this.user.email;
-        this.firstname = this.user.firstname;
-        this.lastname = this.user.lastname;
+        this.firstname = this.user.firstName;
+        this.lastname = this.user.lastName;
         this.city = this.user.city;
-        this.street = this.user.street;
+        this.street = this.user.address;
         this.cp = this.user.cp;
-        this.country = this.user.country;
 
         this.username_ctrl = this.formBulder.control(this.user.username);
         this.email_ctrl = this.formBulder.control(this.user.email);
-        this.firstname_ctrl = this.formBulder.control(this.user.firstname);
-        this.lastname_ctrl = this.formBulder.control(this.user.lastname);
+        this.firstname_ctrl = this.formBulder.control(this.user.firstName);
+        this.lastname_ctrl = this.formBulder.control(this.user.lastName);
         this.city_ctrl = this.formBulder.control(this.user.city);
-        this.street_ctrl = this.formBulder.control(this.user.street);
+        this.street_ctrl = this.formBulder.control(this.user.address);
         this.cp_ctrl = this.formBulder.control(this.user.cp);
-        this.country_ctrl = this.formBulder.control(this.user.country);
+        this.country_ctrl = this.formBulder.control(this.user.city);
 
         this.updateUserForm = this.formBulder.group({
             username: this.username_ctrl,
