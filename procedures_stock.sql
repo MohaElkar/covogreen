@@ -1,5 +1,4 @@
 -- Creating user and/or his car --
-
 DELIMITER |
 CREATE PROCEDURE createUserWithCar(
 	_firstName VARCHAR(255),
@@ -40,3 +39,4 @@ BEGIN
     END IF;
 
 END|
+-- ---------------------------------- --
