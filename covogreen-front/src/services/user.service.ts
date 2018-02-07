@@ -20,6 +20,9 @@ export class UserService {
         let headers = new Headers({ "Content-Type": "application/json" });
         let options = new RequestOptions({ headers: headers });
 
+        console.log(user);
+        console.log(car);
+
         return this.http.post(this.uri, JSON.stringify({user, car}), options)
             .map((response: Response) => {
                 console.log(response.text());
@@ -27,11 +30,11 @@ export class UserService {
             });
     }
 
-    /*createUser(user: User): Observable<string> {
+    /*createUser(user: User, car: Car): Observable<string> {
         let headers = new Headers({ "Content-Type": "application/json" });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.uri, JSON.stringify(user), options)
+        return this.http.post(this.uri, JSON.stringify({user, car}), options)
             .map((response: Response) => {
                 console.log(response.text());
                 return response.text();
