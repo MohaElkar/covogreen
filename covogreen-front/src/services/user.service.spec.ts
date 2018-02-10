@@ -12,11 +12,38 @@ import {
 import { MockBackend } from '@angular/http/testing';
 import { UserService } from './user.service';
 import {Observable} from "rxjs/Observable";
+import {User} from "../class/user";
+import {Car} from "../class/car"
 
 describe('UserService', () => {
 
     let component: UserService;
     let uri: String = "http://localhost:1313/user";
+
+    let userData = {
+        address: "10, Avenue Massena",
+        city: "Nice",
+        cp: "06000",
+        email: "test@test.fr",
+        firstName: "Jean",
+        is_driver: true,
+        lastName: "Valjean",
+        password: "098f6bcd4621d373cade4e832627b4f6",
+        phone: "0600000000",
+        username: "test",
+        have_car: true,
+        id_user: 1,
+        id_car: 1
+    };
+    let user: User = userData;
+
+    let car: Car = {
+        capacity: 3,
+        licencePlate: "77-88-88",
+        make: "Renault",
+        model: "Twingo",
+        id_car: 1
+    };
 
     beforeEach(async(() => {
 
@@ -38,24 +65,7 @@ describe('UserService', () => {
 
             inject([component, XHRBackend], (componentService, mockBackend) => {
 
-                const mockResponse = {
-                    address: "10, Avenue Massena",
-                    capacity: "",
-                    city: "Nice",
-                    confirmPassword: "test",
-                    cp: 6000,
-                    email: "test@test.fr",
-                    firstName: "Jean",
-                    have_car: "",
-                    is_driver: "true",
-                    lastName: "Valjean",
-                    licencePlate: "",
-                    make: "",
-                    model: "",
-                    password: "098f6bcd4621d373cade4e832627b4f6",
-                    phone: "0600000000",
-                    username: "test"
-                };
+                const mockResponse = {status: 200};
 
                 mockBackend.connections.subscribe((connection) => {
                     connection.mockRespond(new Response(new ResponseOptions({
@@ -63,8 +73,8 @@ describe('UserService', () => {
                     })));
                 });
 
-                componentService.createUser().subscribe((response: Response) => {
-                    expect(response.text()).toEqual("Ajout de l'utilisateur OK");
+                componentService.createUser(user, null).subscribe((response: string) => {
+                    expect(JSON.parse(response).status).toEqual(200);
                 });
 
             });
@@ -75,24 +85,7 @@ describe('UserService', () => {
 
             inject([component, XHRBackend], (componentService, mockBackend) => {
 
-                const mockResponse = {
-                    address: "100, Champs Elysée",
-                    capacity: 3,
-                    city: "Paris",
-                    confirmPassword: "test",
-                    cp: 75001,
-                    email: "toto@test.fr",
-                    firstName: "Toto",
-                    have_car: "true",
-                    is_driver: "true",
-                    lastName: "Jean",
-                    licencePlate: "77-88-55",
-                    make: "Peugeot",
-                    model: "RCZ",
-                    password: "098f6bcd4621d373cade4e832627b4f6",
-                    phone: "0600000001",
-                    username: "toto"
-                };
+                const mockResponse = {status: 200};
 
                 mockBackend.connections.subscribe((connection) => {
                     connection.mockRespond(new Response(new ResponseOptions({
@@ -100,8 +93,8 @@ describe('UserService', () => {
                     })));
                 });
 
-                componentService.createUser().subscribe((response: Response) => {
-                    expect(response.text()).toEqual("Ajout de l'utilisateur OK");
+                componentService.createUser(user, car).subscribe((response: string) => {
+                    expect(JSON.parse(response).status).toEqual(200);
                 });
 
             });
@@ -109,4 +102,101 @@ describe('UserService', () => {
         });
 
     });
+
+    describe('updateUser()', () => {
+
+        it('should return an Observable<string>', () => {
+
+            inject([component, XHRBackend], (componentService, mockBackend) => {
+
+                const mockResponse = {status: 200};
+
+                mockBackend.connections.subscribe((connection) => {
+                    connection.mockRespond(new Response(new ResponseOptions({
+                        body: JSON.stringify(mockResponse)
+                    })));
+                });
+
+                componentService.updateUser(user).subscribe((response: string) => {
+                    expect(JSON.parse(response).status).toEqual(200);
+                });
+
+            });
+
+        });
+
+    });
+
+    describe('deleteUser()', () => {
+
+        it('should return an Observable<string>', () => {
+
+            inject([component, XHRBackend], (componentService, mockBackend) => {
+
+                const mockResponse = {status: 200};
+
+                mockBackend.connections.subscribe((connection) => {
+                    connection.mockRespond(new Response(new ResponseOptions({
+                        body: JSON.stringify(mockResponse)
+                    })));
+                });
+
+                componentService.deleteUser(user).subscribe((response: string) => {
+                    expect(JSON.parse(response).status).toEqual(200);
+                });
+
+            });
+
+        });
+
+    });
+
+    describe('getUser()', () => {
+
+        it('should return an Observable<User>', () => {
+
+            inject([component, XHRBackend], (componentService, mockBackend) => {
+
+                const mockResponse = user;
+
+                mockBackend.connections.subscribe((connection) => {
+                    connection.mockRespond(new Response(new ResponseOptions({
+                        body: JSON.stringify(mockResponse)
+                    })));
+                });
+
+                componentService.getUser().subscribe((response: User) => {
+                    expect(response).toEqual(user);
+                });
+
+            });
+
+        });
+
+    });
+
+    describe('updatePassword()', () => {
+
+        it('should return an Observable<User>', () => {
+
+            inject([component, XHRBackend], (componentService, mockBackend) => {
+
+                const mockResponse = {status: 200};
+
+                mockBackend.connections.subscribe((connection) => {
+                    connection.mockRespond(new Response(new ResponseOptions({
+                        body: JSON.stringify(mockResponse)
+                    })));
+                });
+
+                componentService.updatePassword(user).subscribe((response: string) => {
+                    expect(JSON.parse(response).status).toEqual(200);
+                });
+
+            });
+
+        });
+
+    });
+
 });

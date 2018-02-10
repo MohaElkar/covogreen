@@ -30,17 +30,6 @@ export class UserService {
             });
     }
 
-    /*createUser(user: User, car: Car): Observable<string> {
-        let headers = new Headers({ "Content-Type": "application/json" });
-        let options = new RequestOptions({ headers: headers });
-
-        return this.http.post(this.uri, JSON.stringify({user, car}), options)
-            .map((response: Response) => {
-                console.log(response.text());
-                return response.text();
-            });
-    }*/
-
     updateUser(user: User): Observable<string> {
         let headers = new Headers({ "Content-Type": "application/json" });
         let options = new RequestOptions({ headers: headers });
