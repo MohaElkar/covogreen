@@ -10,9 +10,8 @@ import * as jwt from 'angular2-jwt-simple';
 @Injectable()
 export class AuthentificationService {
 
-	public token: string;
-    public results = [];
-    public authentified = false;
+    public user: User;
+	public token: any;
     private uri: string;
     private skey: string;
 
@@ -29,16 +28,20 @@ export class AuthentificationService {
         });
 	}
 
+    /**
+     * Method for getting all users.
+     * @returns {Observable<Response>}
+     */
 	public getUsers() {
 		return this.http.get(this.uri + "user/all");
     }
 
-    login(username: string, password: string): Observable<boolean> {
-
-        let user = {
-            username: username,
-            password: password
-        };
+    /**
+     * Method for accept or refuse connexion for users.
+     * @param {User} user
+     * @returns {Observable<boolean>}
+     */
+    login(user: User): Observable<boolean> {
 
         let headers = new Headers({ "Content-Type": "application/json" });
         let options = new RequestOptions({ headers: headers });
@@ -49,7 +52,6 @@ export class AuthentificationService {
                 if (response.status === 200) {
                     this.token = jwt.decode(response.text(), this.skey);
 
-                    // store username and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(this.token));
 
                     return true;
@@ -59,30 +61,38 @@ export class AuthentificationService {
             });
     }
 
+    /**
+     * Method for accept or refuse connexion to dashboard administrator
+     * @param {User} user
+     * @returns {Observable<boolean>}
+     */
     loginAdmin(user: User): Observable<boolean> {
 
         let headers = new Headers({ "Content-Type": "application/json" });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.uri + "admin/login", JSON.stringify(user), options)
+        return this.http.post(this.uri + "user/login", JSON.stringify(user), options)
             .map((response: Response) => {
 
-                if (response.status === 200) {
-                    this.token = jwt.decode(response.text(), 'secret');
+                if ( response.status === 200 ) {
+                    this.token = jwt.decode(response.text(), this.skey);
+                    this.user = this.token;
 
-                    // store username and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentAdmin', JSON.stringify(this.token));
-                    let tokenUser = localStorage.getItem('currentAdmin');
-                    console.log(tokenUser);
+                    console.log(this.user);
+                    if(this.user.privilege == 2){
+                        localStorage.setItem('currentAdmin', JSON.stringify(this.token));
+                        return true;
+                    } else return false;
 
-                    return true;
-                } else {
-                    return false;
                 }
+                else return false;
+
             });
     }
 
-
+    /**
+     * Method disconnect user session.
+     */
     logout(): void {
         // clear token remove user from local storage to log user out
         this.token = null;
@@ -90,6 +100,9 @@ export class AuthentificationService {
         this.router.navigate(['/login']);
     }
 
+    /**
+     * Method disconnect administrator session.
+     */
     logoutAdmin(): void {
         // clear token remove user from local storage to log user out
         this.token = null;

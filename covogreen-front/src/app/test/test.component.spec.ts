@@ -16,7 +16,6 @@ describe('TestComponent', () => {
     it('Hello World', () => {
         expect(component.helloWorld).toEqual("Hello World !");
     });
-    
 
     it('should render title in a h1 tag', async(() => {
         const fixture = TestBed.createComponent(TestComponent);

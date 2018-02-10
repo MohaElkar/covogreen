@@ -40,7 +40,7 @@ var LoginController = {
             res.status(200).send(token);
         })
         .catch(function (error) {
-            res.status(500).json(error);
+            res.status(500).send("Connexion refusée.");
         });
     },
 

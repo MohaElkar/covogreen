@@ -44,15 +44,17 @@ describe('AuthentificationService', () => {
 
             inject([component, XHRBackend], (componentService, mockBackend) => {
 
-                /*mockBackend.connections.subscribe((connection) => {
+                const mockResponse = {status: 200};
+
+                mockBackend.connections.subscribe((connection) => {
                     connection.mockRespond(new Response(new ResponseOptions({
                         body: JSON.stringify(mockResponse)
                     })));
                 });
 
-                componentService.login().subscribe((response: Boolean) => {
-                    expect(response).toEqual(200);
-                });*/
+                componentService.login().subscribe((response: string) => {
+                    expect(JSON.parse(response).status).toEqual(200);
+                });
 
             });
 

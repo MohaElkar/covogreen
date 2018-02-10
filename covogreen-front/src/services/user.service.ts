@@ -16,6 +16,12 @@ export class UserService {
 		this.uri = "http://localhost:1313/user";
 	}
 
+    /**
+     * Method for creating an user with or without his car.
+     * @param {User} user
+     * @param {Car} car
+     * @returns {Observable<string>}
+     */
     createUser(user: User, car: Car): Observable<string> {
         let headers = new Headers({ "Content-Type": "application/json" });
         let options = new RequestOptions({ headers: headers });
@@ -30,7 +36,7 @@ export class UserService {
             });
     }
 
-    updateUser(user: User): Observable<string> {
+    /*updateUser(user: User): Observable<string> {
         let headers = new Headers({ "Content-Type": "application/json" });
         let options = new RequestOptions({ headers: headers });
 
@@ -39,9 +45,9 @@ export class UserService {
                 console.log(response.text());
                 return response.text();
             });
-    }
+    }*/
 
-    deleteUser(user: User): Observable<string> {
+    /*deleteUser(user: User): Observable<string> {
         let headers = new Headers({ "Content-Type": "application/json" });
         let options = new RequestOptions({ headers: headers });
 
@@ -50,8 +56,12 @@ export class UserService {
                 console.log(response.text());
                 return response.text();
             });
-    }
+    }*/
 
+    /**
+     * Method for getting user data.
+     * @returns {Observable<User>}
+     */
     getUser(): Observable<User> {
         let headers = new Headers({ "Content-Type": "application/json" });
         let options = new RequestOptions({ headers: headers });
@@ -64,7 +74,7 @@ export class UserService {
             });
     }
 
-    updatePassword(user: User): Observable<string> {
+    /*updatePassword(user: User): Observable<string> {
         let headers = new Headers({ "Content-Type": "application/json" });
         let options = new RequestOptions({ headers: headers });
 
@@ -73,6 +83,6 @@ export class UserService {
                 console.log(response.text());
                 return response.text();
             });
-    }
+    }*/
 
 }

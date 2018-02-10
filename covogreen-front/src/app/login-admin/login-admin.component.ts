@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import { FormControl, FormGroup, FormBuilder, Validators, Validator } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import * as md5 from 'md5';
+import { User } from '../../class/user';
 
 import { AuthentificationService } from '../../services/authentification.service';
 
@@ -14,8 +15,7 @@ import { AuthentificationService } from '../../services/authentification.service
 })
 export class LoginAdminComponent implements OnInit {
 
-    public username_ctrl: FormControl;
-    public password_ctrl: FormControl;
+    public user: User;
     public loginAdminForm: FormGroup;
 
     constructor(
@@ -26,37 +26,37 @@ export class LoginAdminComponent implements OnInit {
 
     ngOnInit() {
 
-        this.username_ctrl = this.formBulder.control('', Validators.required);
-        this.password_ctrl = this.formBulder.control('', Validators.required);
-
         this.loginAdminForm = this.formBulder.group({
-            username: this.username_ctrl,
-            password: this.password_ctrl
+            username: "",
+            password: ""
         });
 
     }
 
+    /**
+     * Method for accept or refuse connexion to dashboard administrator
+     */
     loginAdmin() {
-        console.log(this.loginAdminForm.value);
+        this.user = this.loginAdminForm.value;
+        this.user.password = md5(this.user.password);
+        console.log(this.user);
 
-        this.authenticationService.loginAdmin(this.loginAdminForm.value)
+        this.authenticationService.loginAdmin(this.user)
             .subscribe(result => {
-                console.log(result);
-                if (result === true) {
-                    location.reload(true);
-                }
+                if (result === true)  location.reload(true);
             },
-            err => alert(err.text())
+            err => alert("Connexion refusée.")
         );
     }
 
+    /**
+     * Method for checking the protected administrator pages, reserved for authentified administators.
+     * @returns {boolean}
+     */
     checkAuthAdmin(): boolean {
         let tokenUser = localStorage.getItem('currentAdmin');
 
-        if (tokenUser !== null) {
-            return true;
-        } else {
-            return false;
-        }
+        if (tokenUser !== null) return true;
+        else return false;
     }
 }
