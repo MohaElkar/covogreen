@@ -24,8 +24,9 @@ jobs:
           command: cd ~/covogreen/covogreen-back && npm install
 
       - restore_cache:
-          key: dependency-cache-{{ checksum "~/covogreen/covogreen-back/package.json" }}
-      
+          key: 
+            - back-dependency-cache-{{ checksum "~/covogreen/covogreen-back/package.json" }}
+            - back-dependency-cache-
       - save_cache:
           key: dependency-cache-{{ checksum "~/covogreen/covogreen-back/package.json" }}
           paths:
@@ -39,8 +40,10 @@ jobs:
 
 
       - restore_cache:
-          key: dependency-cache-{{ checksum "~/covogreen/covogreen-front/package.json" }}
-      
+          key: 
+            - front-dependency-cache-{{ checksum "~/covogreen/covogreen-front/package.json" }}
+            - front-dependency-cache-
+            
       - save_cache:
           key: dependency-cache-{{ checksum "~/covogreen/covogreen-front/package.json" }}
           paths:
