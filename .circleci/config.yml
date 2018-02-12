@@ -37,6 +37,15 @@ jobs:
           name: Update covogreen-front
           command: cd ~/covogreen/covogreen-front && npm install
 
+
+      - restore_cache:
+          key: dependency-cache-{{ checksum "~/covogreen/covogreen-front/package.json" }}
+      
+      - save_cache:
+          key: dependency-cache-{{ checksum "~/covogreen/covogreen-front/package.json" }}
+          paths:
+            -  ~/covogreen/covogreen-front/node_modules
+
       # run tests!
       - run: cd ~/covogreen/covogreen-back && npm test
 
