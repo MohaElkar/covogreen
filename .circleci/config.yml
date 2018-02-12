@@ -19,38 +19,28 @@ jobs:
     steps:
       - checkout
 
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "~/covogreen/covogreen-back/package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      # install dep covogreen-back
       - run:
           name: Update covogreen-back
           command: cd ~/covogreen/covogreen-back && npm install
-
-      - restore_cache:
-          key: 
-            - back-dependency-cache-{{ checksum "~/covogreen/covogreen-back/package.json" }}
-            - back-dependency-cache-
-      - save_cache:
-          key: dependency-cache-{{ checksum "~/covogreen/covogreen-back/package.json" }}
-          paths:
-            -  ~/covogreen/covogreen-back/node_modules
-
-
-
+      # install dep covogreen-front
       - run:
           name: Update covogreen-front
           command: cd ~/covogreen/covogreen-front && npm install
 
 
-      - restore_cache:
-          key: 
-            - front-dependency-cache-{{ checksum "~/covogreen/covogreen-front/package.json" }}
-            - front-dependency-cache-
-            
       - save_cache:
-          key: dependency-cache-{{ checksum "~/covogreen/covogreen-front/package.json" }}
           paths:
-            -  ~/covogreen/covogreen-front/node_modules
+            - ~/covogreen/covogreen-back/node_modules
+          key: v1-dependencies-{{ checksum "~/covogreen/covogreen-back/package.json" }}
 
-      # run tests!
-      - run: cd ~/covogreen/covogreen-back && npm test
 
       - run:
           name: Test covogreen-back
