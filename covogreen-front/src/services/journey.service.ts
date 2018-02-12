@@ -13,13 +13,8 @@ export class JourneyService {
     }
 
     createJourney(journey: Journey): Observable<string> {
-        let headers = new Headers({ "Content-Type": "application/json" });
-        let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(this.uri + "journey", JSON.stringify(journey), options)
-            .map((response: Response) => {
-                console.log(response.text());
-                return response.text();
-            });
+
+            return 'ee';
     }
 }
