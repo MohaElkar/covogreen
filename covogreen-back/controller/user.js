@@ -44,7 +44,6 @@ var LoginController = {
         });
     },
 
-
     /**
      * For creating an new user and his car.
      * @param req
