@@ -42,10 +42,12 @@ jobs:
       - save_cache:
           paths:
             - ~/covogreen/covogreen-back/node_modules
+          key: v1-dependencies-{{ checksum "~/covogreen/covogreen-back/package.json" }}
+
+      - save_cache:
+          paths:
             - ~/covogreen/covogreen-front/node_modules
-          key: 
-            - v1-dependencies-{{ checksum "~/covogreen/covogreen-back/package.json" }}
-            - v2-dependencies-{{ checksum "~/covogreen/covogreen-front/package.json" }}
+          key: v2-dependencies-{{ checksum "~/covogreen/covogreen-front/package.json" }}
 
   
       - run:
