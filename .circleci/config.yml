@@ -41,7 +41,7 @@ jobs:
             - ~/covogreen/covogreen-back/node_modules
           key: v1-dependencies-{{ checksum "~/covogreen/covogreen-back/package.json" }}
 
-
+  
       - run:
           name: Test covogreen-back
           command: cd ~/covogreen/covogreen-back && npm test
