@@ -29,31 +29,33 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v2-dependencies-
 
-      # install dep covogreen-back
+      # On installe les dépendances covogreen-back.
       - run:
           name: Update covogreen-back
           command: cd ~/covogreen/covogreen-back && npm install
-      # install dep covogreen-front
+      # On installe les dépendances covogreen-front.
       - run:
           name: Update covogreen-front
           command: cd ~/covogreen/covogreen-front && npm install
 
-
+      # On restore le cache si on a déjà dll les dependances covogreen-back.
       - save_cache:
           paths:
             - ~/covogreen/covogreen-back/node_modules
           key: v1-dependencies-{{ checksum "~/covogreen/covogreen-back/package.json" }}
 
+      # On restore le cache si on a déjà dll les dependances covogreen-front.
       - save_cache:
           paths:
             - ~/covogreen/covogreen-front/node_modules
           key: v2-dependencies-{{ checksum "~/covogreen/covogreen-front/package.json" }}
 
-  
+      # On lance le test du covogreen-back.
       - run:
           name: Test covogreen-back
           command: cd ~/covogreen/covogreen-back && npm test
 
+      # On lance le test du covogreen-front.
       - run:
           name: Test covogreen-front
           command: cd ~/covogreen/covogreen-front && npm test
